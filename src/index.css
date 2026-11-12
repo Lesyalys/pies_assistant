@@ -1,0 +1,418 @@
+:root {
+  --bg-color: #f7f4ef;
+  --text-main: #1a1a1a;
+  --text-muted: #757575;
+  --accent-burgundy: #6e2439;
+  --accent-hover: #561a2b;
+  --border-color: #e3dec6;
+  --card-bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* Стандартные шрифты системы */
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+/* Верхняя полоса */
+.top-promo-bar {
+  background-color: var(--accent-burgundy);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Навигация */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.nav-links span {
+  cursor: pointer;
+}
+.nav-links span:hover {
+  color: var(--text-main);
+}
+
+.cart-btn {
+  padding: 8px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cart-btn:hover {
+  border-color: var(--text-main);
+}
+
+/* Поиск */
+.search-container {
+  padding: 0 40px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 600px;
+  padding: 16px 24px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 40px;
+  background-color: transparent;
+  color: var(--text-main);
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--accent-burgundy);
+  background-color: white;
+}
+
+/* Сетка карточек */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 0 40px;
+}
+
+/* Карточка */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Если пирог в стопе, делаем карточку полупрозрачной */
+.card.is-stopped {
+  opacity: 0.75;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.select-kg {
+  padding: 8px 36px 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-burgundy);
+  background-color: #f4f0ea;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Картинка */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-color: #e8e4d9;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Бейджи */
+.badges {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-main);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Стоп-лист (Красная плашка поверх фото) */
+.stop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(220, 38, 38, 0.4); /* Полупрозрачный красный */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.stop-label {
+  background-color: #dc2626;
+  color: white;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+/* Информация */
+.pie-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.pie-details {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.pie-details span {
+  color: var(--text-main);
+}
+
+/* Стоимость */
+.price-container {
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.price {
+  color: var(--accent-burgundy);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Футер */
+.footer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+}
+
+.notes-btn {
+  background-color: var(--accent-burgundy);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 40px;
+  box-shadow: 0 10px 25px rgba(110, 36, 57, 0.3);
+}
+
+.notes-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.notes-menu {
+  position: absolute;
+  bottom: 120%;
+  right: 0;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.notes-menu-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0ebe1;
+  font-size: 14px;
+}
+
+.notes-menu-item:hover {
+  background-color: #f7f4ef;
+  color: var(--accent-burgundy);
+}
+/* Контейнер для всех групп */
+.categories-container {
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Отступ между группами */
+}
+
+/* Секция одной группы */
+.category-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Заголовок группы (кнопка) */
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--accent-burgundy);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: opacity 0.2s;
+}
+
+.category-header:hover {
+  opacity: 0.8;
+}
+
+/* Название категории */
+.category-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* Иконка стрелочки */
+.chevron {
+  font-size: 14px;
+  color: var(--accent-burgundy);
+  transition: transform 0.3s ease;
+}
+
+/* Поворот стрелочки, когда группа открыта */
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Сетка карточек внутри группы */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+/* Бледная карточка, если пирог в стопе */
+.card.is-stopped {
+  opacity: 0.75;
+}
+
+/* Контейнер для оверлея */
+.stop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(220, 38, 38, 0.3); /* Полупрозрачный красный фон */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* Поверх всего */
+}
+
+/* Сама надпись "В СТОПЕ" */
+.stop-label {
+  background-color: #dc2626; /* Яркий красный */
+  color: white;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+  letter-spacing: 1px;
+}
+
+/* Заглушка, если картинки нет */
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #888888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+}
