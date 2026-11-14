@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function PieCard({ pie, sizesDict }) {
+export default function PieCard({ pie, sizesDict, onToggleStop }) {
   const [selectedSizeKey, setSelectedSizeKey] = useState(
     pie.available_sizes[0],
   );
@@ -8,7 +8,11 @@ export default function PieCard({ pie, sizesDict }) {
   const totalPrice = Math.round(pie.price_per_kg * currentSize.kg);
 
   const [imageError, setImageError] = useState(false);
-  const hasImage = pie.image_url && !imageError;
+  const cleanPath = pie.image_url ? pie.image_url.replace(/^\/+/, "") : "";
+  const imageSrc = pie.image_url
+    ? `${import.meta.env.BASE_URL}${cleanPath}`
+    : null;
+  const hasImage = imageSrc && !imageError;
 
   return (
     <div className={`card ${pie.is_stop ? "is-stopped" : ""}`}>
@@ -24,12 +28,21 @@ export default function PieCard({ pie, sizesDict }) {
             </option>
           ))}
         </select>
+
+        {/* Кнопка переключения стопа в шапке карточки */}
+        <button
+          className={`stop-toggle-btn ${pie.is_stop ? "active" : ""}`}
+          onClick={() => onToggleStop(pie.id)}
+          title={pie.is_stop ? "Убрать из стопа" : "Отправить в стоп"}
+        >
+          {pie.is_stop ? "В СТОПЕ" : "В СТОП"}
+        </button>
       </div>
 
       <div className="image-container">
         {hasImage ? (
           <img
-            src={pie.image_url}
+            src={imageSrc}
             alt={pie.name}
             onError={() => setImageError(true)}
           />
@@ -46,7 +59,6 @@ export default function PieCard({ pie, sizesDict }) {
           </div>
         </div>
 
-        {/* КРАСНЫЙ ОВЕРЛЕЙ СТОПА ПОВЕРХ КАРТИНКИ */}
         {pie.is_stop && (
           <div className="stop-overlay">
             <div className="stop-label">В СТОПЕ</div>
