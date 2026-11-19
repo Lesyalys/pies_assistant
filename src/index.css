@@ -47,6 +47,10 @@ body {
 }
 
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--bg-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -410,7 +414,8 @@ body {
   }
 
   .nav-links {
-    display: none; /* Скрываем меню на планшетах */
+    display: none;
+    /* Скрываем меню на планшетах */
   }
 
   .search-container {
@@ -458,7 +463,8 @@ body {
   }
 
   .cards-grid {
-    grid-template-columns: 1fr; /* 1 колонка */
+    grid-template-columns: 1fr;
+    /* 1 колонка */
     gap: 15px;
   }
 
@@ -493,6 +499,7 @@ body {
     bottom: 110%;
   }
 }
+
 /* Кнопка-переключатель стопа в карточке */
 .stop-toggle-btn {
   padding: 6px 12px;

@@ -64,12 +64,18 @@ function App() {
   return (
     <div className="app-container">
       <div className="top-promo-bar">
-        Бесплатная доставка при заказе от 2 000 ₽
+        Бесплатная доставка при заказе от 2 000 ₽ по городу!
       </div>
 
       <nav className="navbar">
-        <div className="logo">Пироговая.</div>
-        <button className="cart-btn">🛒 Корзина (0)</button>
+        <div className="logo">Домашние пироги</div>
+        <span>
+          <ul>
+            <label>Скидки</label>
+            <li>10% - ДР и Самовывоз</li>
+            <li>7% - Профсоюзная карта</li>
+          </ul>
+        </span>
       </nav>
 
       <div className="search-container">
@@ -129,8 +135,6 @@ function App() {
       <footer className="footer">
         {isNotesOpen && (
           <div className="notes-menu">
-            <div className="notes-menu-item">Закрытие смены</div>
-            <div className="notes-menu-item">Итоги дня</div>
             <div
               className="notes-menu-item"
               onClick={resetData}
@@ -144,7 +148,7 @@ function App() {
           className="notes-btn"
           onClick={() => setIsNotesOpen(!isNotesOpen)}
         >
-          Заметки
+          Настройки
         </button>
       </footer>
     </div>
