@@ -1,16 +1,61 @@
-# React + Vite
+# 🥧 Домашние пироги (Pies App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Интерфейс витрины пирогов с быстрым поиском, фильтрацией по категориям и возможностью отмечать позиции в стоп-лист (с сохранением в браузере).
 
-Currently, two official plugins are available:
+## 🚀 Стек технологий
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** (Функциональные компоненты, Хуки)
+- **Vite** (Сборщик)
+- **TypeScript**
+- **CSS3** (БЭМ, CSS-переменные, Flexbox/Grid)
 
-## React Compiler
+## ✨ Основные возможности
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Адаптивный дизайн:** от мобильных устройств до широких экранов.
+- **Умный поиск:** мгновенная фильтрация по названию.
+- **Категории:** сворачиваемые группы (Сладкие, Сытные и т.д.).
+- **Стоп-лист:** переключение статуса пирога с сохранением в `localStorage`.
+- **Смена веса:** выбор граммовки прямо в карточке.
 
-## Expanding the ESLint configuration
+## 🛠️ Запуск проекта
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Установите зависимости:
+
+```bash
+npm install
+```
+
+````
+
+2. Запустите dev-сервер:
+
+```bash
+npm run dev
+```
+
+3. Соберите проект:
+
+```bash
+npm run build
+```
+
+## 📂 Структура проекта
+
+```
+src/
+├── components/      # React-компоненты (Header, Hero, Catalog, Footer и др.)
+├── data/            # JSON-файлы с данными (menu.json, hero.json)
+├── hooks/           # Кастомные хуки (useLocalStorage)
+├── styles/          # Глобальные стили (global.css, components.css)
+├── App.tsx          # Главный компонент (сборка страницы)
+└── main.tsx         # Точка входа
+```
+
+## 🎨 Особенности
+
+- **Данные** хранятся в `src/data/menu.json`.
+- **Изображения** подгружаются по внешним ссылкам (Unsplash).
+- **Стоп-лист** хранится в `localStorage` по ключу `stopped_pies_ids`. Если нужно сбросить состояние, очистите Local Storage в DevTools браузера.
+
+```
+````
